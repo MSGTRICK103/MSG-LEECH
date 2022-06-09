@@ -267,14 +267,14 @@ async def handle_leech_command(e):
         buts.append(
             [
                 KeyboardButtonCallback(
-                    "Upload in a ZIP.[Toggle]", data=f"leechzip toggle {tsp}"
+                    "Upload in a ZIP", data=f"leechzip toggle {tsp}"
                 )
             ]
         )
         buts.append(
             [
                 KeyboardButtonCallback(
-                    "Extract from Archive.[Toggle]", data=f"leechzipex toggleex {tsp}"
+                    "Extract from Archive", data=f"leechzipex toggleex {tsp}"
                 )
             ]
         )
@@ -444,8 +444,7 @@ async def handle_resumeall_command(e):
 async def handle_settings_command(e):
     if await is_admin(e.client, e.sender_id, e.chat_id):
         await handle_settings(e)
-    else:
-        await e.delete()
+    await e.delete()
 
 
 async def handle_status_command(e):
@@ -457,10 +456,12 @@ async def handle_status_command(e):
             await get_status(e)
     else:
         await create_status_menu(e)
+    await e.delete()
 
 
 async def handle_u_status_command(e):
     await create_status_user_menu(e)
+    await e.delete()             
 
 
 async def speed_handler(e):
@@ -643,7 +644,7 @@ async def set_password_zip(message):
 
 
 async def start_handler(event):
-    msg = "Hello This is TorToolkitX running on heroku an instance of <a href='https://github.com/XcodersHub/TorToolkitX'>This Repo</a>. Try the repo for yourself and dont forget to put a STAR and fork."
+    msg = "WELCOME TO MSG-ARMY."
     await event.reply(msg, parse_mode="html")
 
 
@@ -765,14 +766,14 @@ async def handle_server_command(message):
             storage_percent = 0
 
         msg = (
-            f"<b>BOT UPTIME:-</b> {diff}\n\n"
-            f"CPU Utilization: {progress_bar(cpupercent)} - {cpupercent}%\n\n"
-            f"Storage used:- {progress_bar(storage_percent)} - {storage_percent}%\n"
+            f"<b⏳ >BOT UPTIME:-</b> {diff}\n\n"
+            f"🖥 CPU Utilization: {progress_bar(cpupercent)} - {cpupercent}%\n\n"
+            f"💾 Storage used:- {progress_bar(storage_percent)} - {storage_percent}%\n"
             f"Total: {totaldsk} Free: {freedsk}\n\n"
-            f"Memory used:- {progress_bar(mempercent)} - {mempercent}%\n"
-            f"Total: {memtotal} Free: {memfree}\n\n"
-            f"Transfer Download:- {dlb}\n"
-            f"Transfer Upload:- {upb}\n"
+            f"💿 Memory used:- {progress_bar(mempercent)} - {mempercent}%\n"
+            f"📊 Total: {memtotal} Free: {memfree}\n\n"
+            f"🔻 Transfer Download:- {dlb}\n"
+            f"🔺 Transfer Upload:- {upb}\n"
         )
         await message.reply(
             msg,
@@ -815,13 +816,14 @@ async def about_me(message):
         f"<b>Version</b>: <code>{__version__}</code>\n"
         f"<b>Telethon Version</b>: {telever}\n"
         f"<b>Pyrogram Version</b>: {pyrover}\n"
-        "<b>Modified By</b>: @XcodersHub\n\n"
+        "<b>Created By</b>: @Yaknight\n\n"
+        "<b>Modified By</b>: @KangersHub\n\n"
         "<u>Currents Configs:-</u>\n\n"
         f"<b>Bot Uptime:-</b> {diff}\n"
         "<b>Torrent Download Engine:-</b> <code>qBittorrent [4.3.0 fix active]</code> \n"
         "<b>Direct Link Download Engine:-</b> <code>aria2</code> \n"
         "<b>Upload Engine:-</b> <code>RCLONE</code> \n"
-        "<b>Youtube Download Engine:-</b> <code>youtube-dl</code>\n"
+        "<b>Youtube Download Engine:-</b> <code>yt-dlp</code>\n"
         f"<b>Rclone config:- </b> <code>{rclone_cfg}</code>\n"
         f"<b>Leech:- </b> <code>{leen}</code>\n"
         f"<b>Rclone:- </b> <code>{rclone}</code>\n"
@@ -896,6 +898,7 @@ async def handle_user_settings_(message):
             return
 
     await handle_user_settings(message)
+    await message.delete()
 
 
 def term_handler(signum, frame, client):
